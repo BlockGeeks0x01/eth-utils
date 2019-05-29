@@ -17,7 +17,7 @@ def is_hex_address(value: Any) -> bool:
         return False
     else:
         unprefixed = remove_0x_prefix(value)
-        return len(unprefixed) == 40
+        return len(unprefixed) == 42
 
 
 def is_binary_address(value: Any) -> bool:
@@ -26,7 +26,7 @@ def is_binary_address(value: Any) -> bool:
     """
     if not is_bytes(value):
         return False
-    elif len(value) != 20:
+    elif len(value) != 21:
         return False
     else:
         return True
@@ -128,8 +128,10 @@ def is_checksum_address(value: Any) -> bool:
 
     if not is_hex_address(value):
         return False
-    return value == to_checksum_address(value)
-
+    # todo
+    # convert to checksum address
+    # return value == to_checksum_address(value)
+    return True
 
 def is_checksum_formatted_address(value: Any) -> bool:
     if not is_text(value):
